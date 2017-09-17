@@ -1,0 +1,8 @@
+ul.breadcrumbs
+	li.breadcrumbs__item
+		a(href="/"): i.material-icons home
+	//each item in breadcrumbs
+	li.breadcrumbs__item
+		a.breadcrumbs__link(href=`/catalog/${apartment.type}/page/1`)= apartment.type
+	li.breadcrumbs__item
+		span.breadcrumbs__link= apartment.name

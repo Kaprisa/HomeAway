@@ -1,0 +1,35 @@
+.breadcrumbs
+	width: 100%
+	color: rgba(#eee, .5)
+	i
+		color: #00b8d4
+		font-size: 20px
+	&__item
+		display: inline-block
+		padding: 10px
+		position: relative
+		padding-right: 20px
+		transition: font-weight .3s ease
+		cursor: pointer
+		&:hover
+			font-weight: bold
+			i
+				color: darken(#00b8d4, 15%) 
+		&::after
+			content: '/'
+			color: rgba($foreground-color, .7)
+			font-weight: bold
+			line-height: 20px
+			font-size: 20px
+			position: absolute
+			right: 0
+			top: 50%
+			margin-top: -10px
+		&:last-child::after
+			display: none
+	&__link
+		vertical-align: top
+		font-size: 18px
+		line-height: 20px
+		color: #00b8d4
+		display: inline-block

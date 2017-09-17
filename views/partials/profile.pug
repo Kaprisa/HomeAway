@@ -1,0 +1,26 @@
+.profile
+	form#profile.profile-form(action="/profile/update" method="POST")
+		input.input#surname(type="text" name="surname" placeholder="Ваша фамилия")
+		input.input#name(type="text" name="name" placeholder="Ваше имя")
+		input.input#phone(type="text" name="phone" placeholder="Ваш номер телефона")
+		button.btn.btn_transparent.btn_center Сохранить
+	form#change-password.profile-form(action="/auth/password/change" method="POST")
+		h3.title.title_small Смена пароля
+		label.label(for="oldPassword") Старый пароль
+			input.input#oldPassword(type="password" name="oldPassword") 
+		label.label(for="password") Новый пароль
+			input.input#password(type="password" name="password") 
+		label.label(for="confirmPassword") Подтвердите пароль
+			input.input#confirmPassword(type="password" name="confirmPassword") 
+		button.btn.btn_transparent.btn_center Сохранить
+	form#passport.profile-form(action="/user/passport/change" method="POST")
+		h3.title.title_small Паспортные данные
+		ladel.label(for="seria") Серия
+			input.input#seria(type="text" name="seria")
+		ladel.label(for="num") Номер
+			input.input#num(type="text" name="num")
+		ladel.label(for="who") Кем выдан
+			input.input#who(type="text" name="who")
+		ladel.label(for="when") Когда выдан
+			input.input#when(type="text" name="when")
+		button.btn.btn_transparent.btn_center Сохранить

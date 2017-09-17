@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	main.booking
+		h2.title Вы забронировали
+		include partials/apartments
+		.booking__actions
+			.booking__remove.text_blue#remove(data-serv=`/order/${booking._id}/remove`)
+				i.material-icons.booking__remove-icon delete
+				span Удалить это бронирование
+			.booking__info
+				.booking__period
+					span На период
+					strong c #{h.moment(booking.dates.start).format('L')} по #{h.moment(booking.dates.end).format('L')}
+				.booking__total
+					span Сумма к оплате:
+					span.text_accent 
+						span#to-pay #{booking.total - booking.paid} 
+						span руб. из #{booking.total} руб.
+		button.btn.btn_center.btn_transparent.btn_dark#show-pay-popup Оплатить бронирование
+	.popup.pay-popup
+		.popup__content
+			h3.title.title_small.title_center Оплата бронирования
+			.pay-popup__info
+				span.pay-popup__account 
+					span У вас на счету:
+					span#money.pay-popup__money #{user.deposit} 
+					span руб.
+				span.pay-popup__to-pay Оплачено: 
+					span.pay-popup__money#paid #{booking.paid} 
+					span руб.
+				span.pay-popup__to-pay К оплате: 
+					span.pay-popup__money#to-pay #{booking.total - booking.paid} 
+					span руб.
+				label.label Сколько вы хотите заплатить?
+					input.input.js-number#pay-money(type="text" name="pay-money")
+				button.btn_center.btn#pay(data-serv=`/api/pay/${booking._id}`) Оплатить
+				span.btn_hide-popup
+

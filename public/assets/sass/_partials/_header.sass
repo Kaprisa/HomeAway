@@ -1,0 +1,24 @@
+@import "../_components/dropdown"
+
+.header
+	&__line
+		display: flex
+		justify-content: space-between
+		padding: 25px 10% 
+		position: relative
+		&:last-child
+			background-color: $dark-color
+			padding-top: 0
+			padding-bottom: 0
+
+.user
+	@extend .dropdown__holder
+	font-weight: bold
+	&__holder
+		flex-basis: 30%	
+	svg
+		margin-right: 5px
+			
+
+@import "../_components/weather"
+

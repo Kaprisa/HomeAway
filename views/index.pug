@@ -1,0 +1,39 @@
+extends layout
+
+block content
+	main.hotel
+		- const hotel = {'name': 'Sysy hotel', 'type': 'Апарт-отель', 'desc': ' Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Вершину взобравшись сбить буквенных взгляд! Меня языком вдали они ты всеми предупредила, коварных запятых до дал безорфографичный эта. Коварных, маленькая.'}
+		.hotel__top(style="background-image: url(/images/luxe.jpg)")
+			ul.hotel-stocks
+				- const stocks = ['Акция от "Sysy hotel"', 'При аренде апартаментов от трёх суток - скидка 5%']
+				each stock in stocks
+					li.hotel-stocks__item= stock	
+			.hotel__rent.rent.tabs(style="background-image: url(/images/bg3.jpg)")
+				ul.tabs-nav
+					li.tabs-nav__item.tabs-nav__item_active Забронировать апартаменты
+					li.tabs-nav__item Разместить группу
+				include components/rent-form
+		.hotel__about
+			h2.title #{hotel.type} #{hotel.name}
+			p.hotel__desc= hotel.desc
+			.hotel__near.near
+				h3.title.title_small Поблизости от нас
+				.near__list
+					each place in places
+						include components/card
+				a.btn_center.btn.btn_transparent.btn_accent(href="/near") Смотреть все объекты
+		.hotel__apartments
+			h2.apartments__title.title Случайные апартаменты
+			include partials/apartments
+		include partials/features
+		#map.map
+
+
+
+
+
+
+
+
+
+

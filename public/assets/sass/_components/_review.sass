@@ -1,0 +1,69 @@
+.reviews
+	&__apartment
+		position: absolute
+		top: 0
+		left: 50%
+		transform: translateX(-50%)
+		background-color: $accent-color
+		color: #fff
+		padding: 5px 40px
+		border-radius: 20px
+		font-size: 13px
+		transition: background-color .3s ease
+	&__item
+		display: flex
+		position: relative
+		border-radius: 20px
+		margin-bottom: 10px
+		padding: 20px
+		background-color: #fff
+		margin-bottom: 15px
+		&:nth-child(3n)
+			.reviews__apartment
+				background-color: #8caa0b
+				&:hover
+					background-color: darken(#8caa0b, 10%)
+		&:nth-child(3n + 1)
+			.reviews__apartment
+				background-color: $accent-color
+				&:hover
+					background-color: darken($accent-color, 10%)
+		&:nth-child(3n + 2)
+			.reviews__apartment
+				background-color: #524766
+				&:hover
+					background-color: darken(#524766, 10%)	
+	&__left
+		flex-basis: 13%
+		padding: 10px 
+		border-right: 2px solid $dark-color
+		text-align: center
+	&__right
+		flex-basis: 87%
+		padding: 10px 15px
+	&__name
+		display: block
+		margin-bottom: 10px
+	&__title
+		font-weight: bold
+		font-size: 17px
+		margin-bottom: 18px
+	&__trip-type
+		opacity: .7
+		font-size: 13px
+		display: block
+		font-weight: bold
+	&__time
+		font-size: 12px
+		opacity: .6
+	&__good
+		margin-bottom: 10px
+	&__mark
+		font-size: 15px
+	&__text
+		font-size: 13px
+	&__rate-review
+		font-size: 25px
+		color: #00b8d4
+		cursor: pointer
+		margin-left: 20px

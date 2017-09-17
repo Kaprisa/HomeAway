@@ -1,0 +1,54 @@
+.btn
+	display: inline-block
+	font-size: 16px
+	padding: 7px 25px
+	text-decoration: none
+	color: #fff
+	background-color: $accent-color
+	border: none
+	border-radius: 20px
+	transition: background-color .3s ease
+	cursor: pointer
+	&:focus
+		outline: none
+	&:hover
+		text-decoration: none
+		background-color: darken($accent-color, 5%)
+		color: #fff
+	&_green
+		background-color: #17ac1a
+		&:hover
+			background-color: darken(#17ac1a, 5%)
+	&_red
+		background-color: #f33
+		&:hover
+			background-color: darken(#f33, 5%)
+	&_transparent
+		background-color: transparent
+		border: 2px solid #fff
+	&_accent
+		color: $accent-color
+		border-color: $accent-color
+	&_center
+		display: block
+		margin: 0 auto
+		width: 200px
+		text-align: center
+	&_blue
+		background-color: #00b8d4
+		&:hover
+			background-color: darken(#00b8d4, 10%)
+	&_dark
+		color: $dark-color
+		border-color: $dark-color
+		transition: border-color .3s ease
+		&:hover
+			background-color: transparent
+			color: #000
+			border-color: #000
+
+.buttons
+	flex-basis: 100%
+	text-align: center
+	.btn
+		margin-right: 20px

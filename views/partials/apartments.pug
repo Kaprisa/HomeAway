@@ -1,0 +1,42 @@
+section.apartments
+	.apartments__left
+		h2.title.title_accent= apartment.name
+		ul.apartments__info.apart-inf
+			li.apart-inf__item= apartment.location.address
+				include ../../public/images/icons/map_marker.svg
+			li.apart-inf__item #{apartment.characteristics.floor}-й этаж
+				include ../../public/images/icons/floor.svg
+			li.apart-inf__item Общая площадь #{apartment.characteristics.square} кв.м.
+				include ../../public/images/icons/square.svg
+			li.apart-inf__item #{apartment.characteristics.places} раздельных спальных места
+				include ../../public/images/icons/bed.svg
+			li.apart-inf__item Размещение до #{apartment.characteristics.people} человек
+				include ../../public/images/icons/people.svg
+		p.apartments__desc= apartment.description
+		if name && name !== 'booking'
+			if name === 'apartments'
+				.apartments__offer 
+					span Стоимость за 4 ночи:
+					span.text_accent #{apartment.prices.day * 4} руб.
+				.buttons
+					a.btn.btn_transparent(href=`/catalog/${apartment.type}/page/1`) Все #{ apartment.type === 'апартаменты' ? 'апартаменты' : 'студии' }
+					//a.btn.btn_transparent.js-order(data-id=apartment._id type="button") Забронировать
+					if user && user.orders && user.orders.includes(apartment._id)
+						a.btn(href=`/account/orders/${apartment._id}`) Посмотреть бронирование
+					else
+						button.btn.js-order(data-id=apartment._id type="button") Забронировать
+					if user && user.role === 'admin'
+						a.btn.btn_transparent(href=`/admin/apartments/edit/${apartment._id}`) Редактировать
+			else
+				.buttons
+					if user && user.orders && user.orders.includes(apartment._id)
+						a.btn.btn_transparent(href=`/account/orders/${apartment._id}`) Посмотреть бронирование
+					else if name && name === 'index'
+						a.btn.btn_transparent(href=`/catalog/${apartment.type}/page/1`) Все #{ apartment.type === 'апартаменты' ? 'апартаменты' : 'студии' }
+					else
+						button.btn.btn_transparent.js-order(data-id=apartment._id type="button") Забронировать
+					a.btn(href=`/apartments/${apartment._id}`) Подробнее
+	.apartments__right(style=`background-image: url(/uploads/${apartment.photo})`)
+		ul.apartments__prices.prices
+			li.prices__item от #{apartment.prices.day}/сутки
+			li.prices__item от #{apartment.prices.hour}/час

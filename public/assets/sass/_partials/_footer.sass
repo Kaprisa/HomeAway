@@ -1,0 +1,40 @@
+@import "../_components/social"
+
+.footer
+	display: flex
+	justify-content: space-between
+	padding: 25px 10% 
+	background-color: $dark-color
+	color: #fff
+	&__title
+		color: $accent-color
+		text-align: center
+		margin-bottom: 10px
+	.nav
+		&__list
+			flex-direction: column
+		&__link
+			padding: 0
+			margin-bottom: 5px
+			&::after, &::before
+				display: none
+
+.client-menu
+	text-align: center
+	&__link
+		color: #fff
+		margin-bottom: 5px
+		transition: text-decoration .3s ease
+		&:hover
+			text-decoration: underline
+
+.footer-contacts
+	display: flex
+	flex-direction: column
+	align-items: center
+	&__link
+		color: #fff
+	&__mail
+		color: $accent-color
+
+

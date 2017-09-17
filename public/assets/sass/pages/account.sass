@@ -1,0 +1,53 @@
+@import "../_tools/common"
+@import "../_components/text"
+@import "../_partials/booking"
+
+.header
+	margin-bottom: 50px
+
+.account
+	padding: 0 10%
+	box-sizing: border-box
+	min-height: 50vh
+	&__top-line
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 10px 0
+	&-navigation
+		&__item
+			display: inline-block
+			margin-right: 10px
+			padding: 7px 30px
+			border-radius: 3px
+			background-color: $dark-color
+			&_active
+				background-color: $accent-color
+		&__link
+			color: #fff
+
+.deposit
+	&__title
+		margin-right: 10px
+		font-weight: bold
+		line-height: 20px
+		vertical-align: baseline
+	&__money
+		font-size: 20px
+		margin-right: 10px
+
+.profile-form
+	margin-bottom: 35px
+	.label
+		color: $foreground-color
+		&:last-child
+			margin-bottom: 20px
+	.btn
+		color: #000
+		border-color: #000
+		margin-top: 10px
+		transition: border-color .3s ease
+		&:hover
+			background-color: transparent
+			border-color: #333
+			color: #333

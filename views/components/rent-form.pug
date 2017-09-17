@@ -1,0 +1,22 @@
+form.form.tabs__item.tabs__item_active
+	label.label_icon.label.label_for-calendar(for="enterDate") Дата заезда
+		include ../../public/images/icons/calendar.svg
+		input.input(type="text" name="enterDate" id="enterDate")
+		.calendar__holder
+	label.label_icon.label.label_for-calendar(for="leaveDate") Дата выезда
+		include ../../public/images/icons/calendar.svg
+		input.input(type="text" name="leaveDate" id="leaveDate")
+		.calendar__holder
+	label.label.type Тип
+		- const typeList = [{'name': 'Апартаменты', 'data': 'апартаменты'}, {'name': 'Студия', 'data': 'студия'}]
+		span.type__current.dropdown__text(data-type=typeList[0].data)= typeList[0].name
+		ul.type__dropdown.dropdown.js-dropdown
+			each item in typeList
+				li.dropdown__item.js-type-item(data-type=item.data)= item.name
+	if name && name !== 'catalog' 
+		include ../components/counter
+	include ../components/sort
+	.buttons.rent-buttons
+		button.btn.btn_transparent Добавить бронирование
+		a.btn#show-results(href="/catalog") Показать результаты
+	

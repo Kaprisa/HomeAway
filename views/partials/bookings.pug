@@ -1,0 +1,18 @@
+table.bookings
+	thead
+		tr
+			td Дата проживания
+			td Апартаменты
+			td Статус
+			td Оплачено
+			td К оплате
+	tbody
+		if orders
+			each order in orders
+				tr
+					td #{h.moment(order.dates.start).format('L')} - #{h.moment(order.dates.end).format('L')}
+					td
+						a.bookings__link(href=`/account/orders/${order._id}`)= order.apartment
+					td(class=`${order.total === order.paid ? 'text_green' : 'text_blue'}`) #{order.total === order.paid ? 'Оплачено полностью' : `Оплачено ${order.paidDays} день`}
+					td #{order.paid} руб.
+					td #{order.total - order.paid} руб.

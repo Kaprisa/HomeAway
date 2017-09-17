@@ -1,0 +1,26 @@
+extends layout
+
+block content
+		main.account
+			.account__top-line
+				nav.account-navigation
+					- const pages = {'profile': 'Личная информация', 'bookings': 'Ваши бронирования', 'history': 'История оплат'}
+					ul.account-navigation__list
+						each value, key in pages
+							li.account-navigation__item(class=(page === key ? 'account-navigation__item_active' : ''))
+								a.account-navigation__link(href=`/account/${key}`)= value
+				.account__deposit.deposit
+					span.deposit__title Ваш депозит:
+					span.text_accent.deposit__money
+						span#money #{ user.deposit ? user.deposit : 0 }
+						span руб.
+					button.btn.btn_transparent.btn_accent#show-money-popup Пополнить
+			if page
+				.account-tabs
+					if page === 'profile'
+						include partials/profile.pug
+					else if page === 'bookings'
+						include partials/bookings.pug
+					else if page === 'history'
+						include partials/history.pug
+		include components/money-popup

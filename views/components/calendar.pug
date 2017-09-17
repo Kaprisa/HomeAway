@@ -1,0 +1,24 @@
+//- const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+
+article.calendar__holder
+	.calendar__arrows.arrows
+		span.arrows_left 
+		span.arrows_right 
+	span.calendar__day= h.moment().format('LL')
+	table.calendar__table
+		thead
+			tr.calender__row
+				each day in days
+					th.calendar__col.calendar__col_head= day
+		tbody
+			- var j = 26
+			- for (let i = 0; i < 5; ++i) {
+				tr.calender__row
+				- for (let k = 0; k < 7; k++) {
+					- if (j == 30) {
+						- j = 1
+					- }
+					td.calendar__col(class=( j === now ? 'calendar__col_current' : ''))= j
+					- j = j + 1
+				- }
+			- }

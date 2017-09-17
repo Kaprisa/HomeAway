@@ -1,0 +1,20 @@
+article.apartments-card
+	.apartments-card__top(style=`background-image: url(/uploads/${apartment.photo})`)
+		ul.apartments__prices.prices
+			li.prices__item от #{apartment.prices.day}/сутки
+			li.prices__item от #{apartment.prices.hour}/час
+	.apartments-card__bottom
+		h2.title.title_accent= apartment.name
+		ul.apartments__info.apart-inf
+			li.apart-inf__item= apartment.location.address
+				include ../../public/images/icons/map_marker.svg
+			li.apart-inf__item #{apartment.characteristics.floor}-й этаж
+				include ../../public/images/icons/floor.svg
+			li.apart-inf__item Общая площадь #{apartment.characteristics.square} кв.м.
+				include ../../public/images/icons/square.svg
+			li.apart-inf__item #{apartment.characteristics.places} раздельных спальных места
+				include ../../public/images/icons/bed.svg
+			li.apart-inf__item Размещение до #{apartment.characteristics.people} человек
+				include ../../public/images/icons/people.svg
+		a.btn.btn_center.btn_transparent(href=`/apartments/${apartment._id}`) Подробнее
+	

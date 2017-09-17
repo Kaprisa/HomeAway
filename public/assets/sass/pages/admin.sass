@@ -1,0 +1,122 @@
+@import "../_tools/common"
+
+.editor
+	width: 100%
+	padding: 5% 10%
+	box-sizing: border-box
+	position: relative
+	.title
+		text-align: center
+		margin-bottom: 20px
+	.label
+		color: $foreground-color
+		margin-bottom: 10px
+		flex-basis: 100%
+	&__add-icon
+		position: absolute
+		font-size: 30px
+		color: #00b8d4
+		cursor: pointer
+		top: 60px
+		right: 10px
+	&__load-img
+		margin-left: 50px
+		position: relative
+		padding-left: 30px
+		cursor: pointer
+		font-size: 18px
+		font-style: italic
+		svg
+			position: absolute
+			left: 0
+			top: 50%
+			margin-top: -12px
+			width: 25px
+			height: 25px
+	&__right
+		margin-top: 10px
+		flex-basis: 45%
+		align-self: flex-start
+		max-width: 45%
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		align-items: center
+		min-height: 600px
+	&__left
+		flex-basis: 50%
+		display: flex
+		flex-wrap: wrap
+	&__img
+		max-height: 450px
+		margin-bottom: 30px
+	&__characteristics
+		margin-top: 30px
+		position: relative
+	&__equipment
+		width: 100%
+		position: relative
+		margin-bottom: 60px
+	&-table
+		width: 100%
+		border: 1px solid rgba(#000, .5)
+		border-spacing: 0
+		margin-bottom: 10px
+		border-bottom: none
+		&__head
+			background-color: #ccc
+			color: #000
+			font-weight: bold
+			text-align: center 
+		&__col
+			padding: 5px
+			color: #222
+			font-size: 16px
+			border-bottom: 1px solid rgba(#000, .5)
+			border-right: 1px solid rgba(#000, .5)
+			&:first-child
+				width: 30%
+				text-align: right
+			&:last-child
+				border-right: none
+			&-inner
+				display: inline-block
+				box-sizing: border-box
+				padding: 5px
+				width: 50%
+				height: 100%
+				border: 1px solid rgba(#000, .2)
+	&__label_coord
+		flex-basis: 50%
+		max-width: 50%
+	&__time-line
+		display: flex
+		justify-content: space-between
+		width: 100%
+		.label
+			flex-basis: 45%
+			width: 45%
+			font-weight: bold
+			font-size: 13px
+		.input
+			display: inline-block
+			width: 100px
+			font-size: 14px
+			&:first-child
+				margin-left: 5px
+	.buttons-submit
+		position: absolute
+		bottom: 7%
+		right: 20%
+	&__link
+		font-size: 13px
+		font-weight: bold
+		position: absolute
+		top: 20px
+		left: 20px
+		color: #00b8d4
+
+[contenteditable=true]:empty:before 
+	content: attr(placeholder)
+	color: rgba(#000, .5)
+	font-style: italic

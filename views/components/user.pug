@@ -1,0 +1,13 @@
+.user
+	if !user
+		include ../../public/images/icons/room-key.svg
+		span.user__text.dropdown__text Личный кабинет
+	else
+		span.user__text.dropdown__text Здравствуйте, #{user.profile && user.profile.name ? user.profile.name : 'дорогой гость'}
+	ul.user__dropdown.dropdown
+		if !user
+			li.dropdown__item: a.dropdown__link.js-user-showPopup(href="#") Регистрация
+			li.dropdown__item: a.dropdown__link.js-user-showPopup(href="#") Авторизация
+		else
+			li.dropdown__item: a.dropdown__link(href="/account") Личный кабинет
+			li.dropdown__item: a.dropdown__link(href="/logout") Выход

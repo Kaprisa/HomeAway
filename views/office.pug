@@ -1,0 +1,19 @@
+extends layout
+
+block content
+	main.office
+		h2.office__title.title= office.name
+		.office__content
+			.office__info
+				.office__address
+					strong Адрес:
+					= office.location.address
+					a.office__link(href=`/contacts/${office._id}`) Посмотреть на карте
+				table.office__table
+					tr
+						td Пн. - Пт.
+						td #{office.businessHours[0].start} - #{office.businessHours[0].end}
+					tr
+						td Суб. - Вс.
+						td #{office.businessHours[1].start} - #{office.businessHours[1].end}
+			img.office__photo(src=( office.photo ? `/uploads/${office.photo}` : "/images/office.jpg" ))

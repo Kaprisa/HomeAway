@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	main.near
+		h2.title Поблизости от нас
+		each group in placeGroups
+			.near__group
+				h3.title.title_small.near-group__title= group._id
+				.near__list
+					each place in group.places
+						include components/card

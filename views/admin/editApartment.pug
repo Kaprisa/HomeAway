@@ -1,0 +1,74 @@
+extends layout
+	
+block content
+	main.editor#apartment-editor
+		a.editor__link(href="/") Вернуться на сайт
+		h2.title.editor__title #{apartment ? `Редактировать ${apartment.name}` : 'Новые апартаменты'}
+		form.form.editor__form(action=`/apartments/add/${apartment ? apartment.id : ''}`)
+			.editor__left
+				label.label(for="name") Название апартаментов:
+					input.input#name(type="text" name="name" value=(apartment ? apartment.name : ''))
+				label.label(for="type") Тип апартаментов:
+					input.input#type(type="text" name="type" value=(apartment ? apartment.type : ''))
+				label.label(for="phone") Телефон:
+					input.input#phone(type="text" name="phone" value=(apartment ? apartment.phone : ''))
+				label.label(for="address") Адрес:
+					input.input#address(type="text" name="address" value=(apartment && apartment.location ? apartment.location.address : ''))
+				label.label.editor__label_coord(for="lng") Lng:
+					input.input.grid-col_3#lng.js-number(type="text" name="lng" value=(apartment && apartment.location ? apartment.location.coordinates[0] : ''))
+				label.label.editor__label_coord(for="lat") Lat:
+					input.input.js-number#lat(type="text" name="lat" value=(apartment && apartment.location ? apartment.location.coordinates[1] : ''))
+				label.label(for="dayPrice") Цена / день ( в руб. ):
+					input.input.js-number#dayPrice(type="text" name="dayPrice" value=(apartment ? apartment.prices.day : ''))
+				label.label(for="hourPrice") Цена / час ( в руб. ):
+					input.input.js-number#hourPrice(type="text" name="hourPrice" value=(apartment ? apartment.prices.hour : ''))
+				label.label.grid-col_start(for="description") Описание:
+					textarea.grid-col_9.textarea.editor__textarea#description #{apartment && apartment.description ? apartment.description : ''}
+				.editor__characteristics
+					h4.title.title_small Характеристики
+					table.editor-table
+						thead.editor-table__head
+							td.editor-table__col Название
+							td.editor-table__col Значение
+						tr.editor-table__row
+							td.editor-table__col Этаж
+							td.editor-table__col#floor(contenteditable='true') #{apartment && apartment.characteristics.floor ? apartment.characteristics.floor : ''}
+						tr.editor-table__row
+							td.editor-table__col Площадь ( в кв.м. )
+							td.editor-table__col.js-number#square(contenteditable='true') #{apartment && apartment.characteristics.square ? apartment.characteristics.square : ''}
+						tr.editor-table__row
+							td.editor-table__col Колличество спальных мест
+							td.editor-table__col.js-number#places(contenteditable='true') #{apartment && apartment.characteristics.places ? apartment.characteristics.places : ''}
+						tr.editor-table__row
+							td.editor-table__col Колличество человек для размещения
+							td.editor-table__col.js-number#people(contenteditable='true') #{apartment && apartment.characteristics.people ? apartment.characteristics.people : ''}
+			.editor__right
+				label.editor__load-img(for="photo") Загрузить фото
+					include ../../public/images/icons/file.svg
+					input.input_file#photo(type="file" name="photo" accepts="image/gif, image/jpeg, image/png, image/jpg" hidden)
+				if apartment
+					img.editor__img(src=`/uploads/${apartment.photo}`)
+				else
+					img.editor__img(src=`/images/deluxe.jpg`)
+				.editor__equipment
+					h4.title.title_small Оснащение
+					table.editor-table
+						thead.editor-table__head
+							td.editor-table__col Название
+							td.editor-table__col: a.editor-table__link(href="https://material.io/icons" target="_blank") Иконка
+						tbody
+							if apartment && apartment.equipment
+								each item in apartment.equipment
+									tr.editor-table__row.js-eqi
+										td.editor-table__col= item.name
+										td.editor-table__col(contenteditable='true')= item.icon
+					i.editor__add-icon.material-icons#editor-add-eqi add_circle_outline
+				.buttons.buttons-submit
+					button.btn.btn_blue Сохранить
+					if apartment
+						button.btn.btn_red#confirm-delete(type="button") Удалить
+	if apartment
+		include ../mixins/_confirm
+		+confirm("Вы действительно хотите удалить товар?", 	`/apartment/${apartment._id}`, "DELETE")
+
+

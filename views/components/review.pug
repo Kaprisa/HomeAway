@@ -1,0 +1,18 @@
+.reviews__item
+	if (name && name === 'reviews')
+		a.reviews__apartment(href=`/apartments/${review.apartment._id}`) #{review.apartment.type} #{review.apartment.name}
+	.reviews__left
+		span.reviews__name= (review.author.profile && review.author.profile.name ? review.author.profile.name : review.author.email)
+		span.reviews__trip-type= review.tripType
+		time.reviews__time(datetime=review.created)= h.moment(review.created).fromNow()
+		.reviews__stars
+			!= '<i class="material-icons">star</i>'.repeat(review.rating)
+			!= '<i class="material-icons">star_border</i>'.repeat(5 - review.rating)
+	.reviews__right
+		span.reviews__title= review.main
+		.reviews__good
+			span.reviews__mark.text_green Что понравилось
+			p.reviews__text= review.good
+		.reviews__bad
+			span.reviews__mark.text_red Что не понравилось 
+			p.reviews__text= review.bad

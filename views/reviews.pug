@@ -1,0 +1,8 @@
+extends layout
+
+block content
+	main.reviews
+		h2.title Отзывы наших гостей
+		if reviews
+			each review in reviews
+				include components/review

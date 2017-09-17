@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	main.contacts
+		h1.title.contacts__title Найдите наши офисы на карте
+		if office
+			.contacts-info
+				.contacts-info__col
+					span.contacts-info__title #{office.name || 'SysyHome'}
+					span.contacts-info__content #{office.location.address || 'Уфа, пр. Октября, 13а'}
+				.contacts-info__col
+					span.contacts-info__title Телефон
+					span.contacts-info__content #{office.phone || '+7 (490) 99-99-99'}
+				.contacts-info__col
+					span.contacts-info__title Режим работы
+					span.contacts-info__content пн-пт: #{office.businessHours[0].start} - #{office.businessHours[0].end}, сб-вс: #{office.businessHours[1].start} - #{office.businessHours[1].end}
+		.contacts__map-holder
+			input.input.contacts__search(type="text" placeholder="Найдите наши офисы на карте" value=(office ? office.location.address : ''))
+			#map.contacts__map
+		h2.contacts__title.title.title_small Написать нам
+		form.contacts__form.form(action="/callback", method="POST")
+			label.label(for="name") Ваше имя:
+				input.input(type="text", name="name")
+			label.label(for="email") Ваш E-Mail:
+				input.input(type="text", name="email")
+			label.label(for="message") Ваш вопрос или сообщение:
+				textarea.textarea(name="message")
+			button.btn.contacts__button.btn_center Отправить сообщение

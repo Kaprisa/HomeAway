@@ -1,0 +1,31 @@
+@import "../_tools/common"
+@import "../_components/card"
+
+.near
+	padding: 50px 10%
+	box-sizing: border-box
+	&__list
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
+		margin-bottom: 20px
+	&__item
+		flex-basis: 24%
+		max-width: 24%
+		margin-bottom: 20px
+	&-group__title
+		text-transform: uppercase
+	&__group
+		&:nth-child(3n)
+			.near-group__title
+				color: #8caa0b
+		&:nth-child(3n + 1)
+			.near-group__title
+				color: $accent-color
+		&:nth-child(3n + 2)
+			.near-group__title
+				color: #524766
+
+
+
+

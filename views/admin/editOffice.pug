@@ -1,0 +1,43 @@
+extends layout
+	
+block content
+	main.editor#office-editor.office-editor
+		a.editor__link(href="/") Вернуться на сайт
+		h2.title.editor__title #{office ? `Редактировать ${office.name}` : 'Новый офис'}
+		form.form.editor__form(action=`/office/add/${office ? office.id : ''}` )
+			.editor__left
+					label.label(for="name") Название офиса:
+						input.input.grid-col_9#name(type="text" name="name" value=(office ? office.name : ''))
+					label.label(for="phone") Телефон:
+						input.input.grid-col_9#phone(type="text" name="phone" value=(office ? office.phone : ''))
+					label.label(for="address") Адрес:
+						input.input.grid-col_9#address(type="text" name="address" value=(office && office.location ? office.location.address : ''))
+					label.label.editor__label_coord(for="lng") Lng:
+						input.input.grid-col_3#lng.js-number(type="text" name="lng" value=(office && office.location ? office.location.coordinates[0] : ''))
+					label.label.editor__label_coord(for="lat") Lat:
+						input.input.js-number#lat(type="text" name="lat" value=(office && office.location ? office.location.coordinates[1] : ''))
+					label.label Часы работы:
+					.editor__time-line
+						label.label П-П:
+							input.input#weekdays-start(type="time" name="weekdays-start" value=(office && office.businessHours ? office.businessHours[0].start : ''))
+							input.input#weekdays-end(type="time" name="weekdays-end" value=(office && office.businessHours ? office.businessHours[0].end : ''))
+						label.label С-В:
+							input.input#weekend-start(type="time" name="weekend-start" value=(office && office.businessHours ? office.businessHours[1].start : ''))
+							input.input#weekend-end(type="time" name="weekend-end" value=(office && office.businessHours ? office.businessHours[1].end : ''))
+					label.label(for="description") Описание:
+						textarea.textarea.editor__textarea#description #{office && office.description ? office.description : ''}
+			.editor__right
+				label.editor__load-img(for="photo") Загрузить фото
+					include ../../public/images/icons/file.svg
+					input.input_file#photo(type="file" name="photo" accepts="image/gif, image/jpeg, image/png, image/jpg" hidden)
+				if office
+					img.editor__img(src=`/uploads/${office.photo}`)
+				else
+					img.editor__img(src=`/images/office.jpg`)
+			.buttons-submit
+				button.btn.btn_center Сохранить
+				if office
+					button.btn.btn_red#confirm-delete(type="button") Удалить
+	if office
+		include ../mixins/_confirm
+		+confirm("Вы действительно хотите удалить магазин?", 	`/office/${office._id}`, "DELETE")

@@ -1,0 +1,35 @@
+extends layout
+	
+block content
+	main.editor#place-editor.place-editor
+		a.editor__link(href="/") Вернуться на сайт
+		h2.title.editor__title #{place ? `Редактировать ${place.name}` : 'Новое место'}
+		form.form.editor__form(action=`/place/add/${place ? place.id : ''}` )
+			.editor__left
+					label.label(for="name") Название места:
+						input.input#name(type="text" name="name" required value=(place ? place.name : ''))
+					label.label(for="purpose") Цель места:
+						input.input#purpose(type="text" name="name" placeholder="для ..." required value=(place ? place.purpose : ''))
+					label.label(for="address") Адрес:
+						input.input#address(type="text" name="address" value=(place && place.location ? place.location.address : ''))
+					label.label.editor__label_coord(for="lng") Lng:
+						input.input.grid-col_3#lng.js-number(type="text" name="lng" value=(place && place.location ? place.location.coordinates[0] : ''))
+					label.label.editor__label_coord(for="lat") Lat:
+						input.input.js-number#lat(type="text" name="lat" value=(place && place.location ? place.location.coordinates[1] : ''))
+					label.label(for="description") Описание:
+						textarea.textarea.editor__textarea#description #{place && place.description ? place.description : ''}
+			.editor__right
+				label.editor__load-img(for="photo") Загрузить фото
+					include ../../public/images/icons/file.svg
+					input.input_file#photo(type="file" name="photo" accepts="image/gif, image/jpeg, image/png, image/jpg" hidden)
+				if place
+					img.editor__img(src=`/uploads/${place.photo}`)
+				else
+					img.editor__img(src=`/images/place.jpg`)
+			.buttons-submit
+				button.btn.btn_center Сохранить
+				if place
+					button.btn.btn_red#confirm-delete(type="button") Удалить
+	if place
+		include ../mixins/_confirm
+		+confirm("Вы действительно хотите удалить магазин?", 	`/place/${place._id}`, "DELETE")

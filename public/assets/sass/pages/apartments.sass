@@ -1,0 +1,96 @@
+@import "../_tools/common"
+@import "../_components/counter"
+@import "../_components/popup"
+@import "../_components/text"
+@import "../_components/review"
+@import "../_components/breadcrumbs"
+@import "../_partials/apartments"
+
+.header
+	margin-bottom: 50px
+
+.equipment
+	padding: 0 10%
+	margin-bottom: 50px
+	&__item
+		margin-bottom: 7px
+	&__icon
+		width: 20px
+		height: 20px
+		color: $accent-color
+		margin-right: 15px
+		vertical-align: top
+	&__name
+		display: inline-block
+		line-height: 30px
+		vertical-align: top
+
+.apartments
+	&__details
+		display: flex
+		justify-content: space-between
+		padding: 0 10%
+		margin-bottom: 50px
+	&__gallery
+		flex-basis: 45%
+	&__description
+		flex-basis: 50%
+	&__reviews
+		padding: 0 10%
+		margin-bottom: 50px
+	&__recomendations
+		display: flex
+		flex-wrap: wrap
+		padding: 0 10%
+		justify-content: space-between
+		margin-bottom: 50px
+		.title
+			flex-basis: 100%
+	&-card
+		flex-basis: 45%
+		max-width: 45%
+		&__top
+			height: 300px
+			background-size: 100% 100%
+		&__bottom
+			background-color: $dark-color
+			padding: 10px 15px
+	&__map
+		.title
+			margin-left: 10%
+	&__offer
+		font-size: 23px
+		text-align: center
+		margin-bottom: 20px
+		span:first-child
+			margin-right: 10px
+
+.gallery
+	display: flex
+	flex-wrap: wrap
+	&__item
+		flex-basis: 25%
+		max-width: 25%
+		height: 100px
+		cursor: pointer
+		&:first-child
+			flex-basis: 100%
+			max-width: 100%
+			height: auto
+	.btn_hide-popup
+		background-color: #fff
+		&:hover
+			background-color: #ddd
+
+.description
+	&__text
+		font-size: 14px
+		margin-bottom: 30px
+	&__item
+		margin-bottom: 15px
+		line-height: 20px
+		span
+			display: block
+
+.map
+	min-height: 50vh

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+	.catalog
+		aside.catalog__aside.filters
+			h2.title Наши апартаменты
+			.filters__item.check-list
+				label.check-list__item(for="aprt_1") Апартаменты с 1-ой спальней
+					input.check-list__check(type="checkbox" name="aprt_1" id="aprt_1")
+				label.check-list__item(for="studio_1") Студия с 1-ой спальней
+					input.check-list__check(type="checkbox" name="stydio_1" id="studio_1")
+				label.check-list__item(for="aprt_2") Апартаменты с 2-мя спальнями
+					input.check-list__check(type="checkbox" name="aprt_2" id="aprt_2")
+			.filters__item
+				h2.title "Умный" подбор
+				.check-list
+					label.check-list__item(for="for-two") Апартаменты для двоих
+						input.check-list__check(type="checkbox" name="for-two" id="for-two")
+					label.check-list__item(for="for-family") Апартаменты для семьи
+						input.check-list__check(type="checkbox" name="for-family" id="for-family")
+					label.check-list__item(for="for-company") Апартаменты для компании
+						input.check-list__check(type="checkbox" name="for-company" id="for-company")
+			.filters__item
+				h2.title Особые параметры
+				.check-list
+					label.check-list__item(for="hour-rent") Почасовая аренда
+						input.check-list__check(type="checkbox" name="hour-rent" id="hour-rent")
+					label.check-list__item(for="night-rent") Остановиться на ночь
+						input.check-list__check(type="checkbox" name="night-rent" id="night-rent")
+					label.check-list__item(for="cond") Кондиционер
+						input.check-list__check(type="checkbox" name="cond" id="cond")
+		main.catalog__main
+			//- const apartment = {'name': 'Апартаменты с 1 спальней (ID 01)', 'address': 'Подмосковный бульвар, д.12', 'floor': '8', 'square': '54', 'places': '3', 'people': '4', 'price': {'day': '4000', 'hour': '1000'}}
+			include components/rent-form
+			#catalog-holder
+				include partials/apartmentsList

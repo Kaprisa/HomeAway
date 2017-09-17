@@ -1,0 +1,98 @@
+@import "vars"
+@import "fonts"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	min-height: 100%
+
+body
+	margin: 0
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	color: $foreground-color
+	background-color: $background-color
+	overflow-x: hidden
+	opacity: 1
+
+main
+	width: 100%
+
+h1, h2, h3, h4, h5, h6, p
+	padding: 0
+	margin: 0
+
+img
+	max-width: 100%
+	height: auto
+
+ul
+	padding: 0
+	margin: 0
+	list-style-type: none
+
+a
+	text-decoration: none
+	color: $foreground-color
+	cursor: pointer
+
+form, input, textarea
+	margin: 0
+	padding: 0
+	border: none
+
+svg
+	width: 18px
+	height: 18px
+
+.logo
+	z-index: 100
+	svg
+		width: 100px
+		height: auto
+		position: absolute
+		top: -10px
+
+.lang
+	&__item
+		display: inline-block
+		margin-right: 5px
+		cursor: pointer
+		font-weight: bold
+		&_active
+			color: $accent-color
+
+@import "../_partials/header"
+@import "../_partials/footer"
+@import "../_components/title"
+@import "../_components/button"
+@import "../_components/form"
+@import "../_components/navigation"
+@import "../_components/popup"
+
+
+

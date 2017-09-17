@@ -1,0 +1,51 @@
+@import "../_tools/common"
+@import "../_partials/apartments"
+@import "../_components/text"
+
+.booking
+	margin: 50px 0
+	.title
+		margin-left: 10%
+	.btn
+		width: 20%
+	&__actions
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 0 10%
+		margin-bottom: 30px
+	&__remove
+		//color: $accent-color
+		cursor: pointer
+		span, i
+			line-height: 20px
+			vertical-align: middle
+	&__period
+		font-size: 20px
+		margin-bottom: 5px
+		span
+			margin-right: 5px
+	&__total
+		font-size: 30px
+		font-weight: bold
+		span
+			margin-right: 7px
+			&:last-child
+				font-size: 35px
+	
+.pay-popup
+	.popup__content
+		width: 40%
+	.label
+		margin-bottom: 20px
+		display: block
+	&__info
+		span
+			margin: 0 2px
+	&__account, &__to-pay
+		display: block
+		margin-bottom: 10px
+		font-size: 18px
+	&__money
+		font-weight: bold
+		color: $accent-color

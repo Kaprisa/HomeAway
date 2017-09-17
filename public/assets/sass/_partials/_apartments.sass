@@ -1,0 +1,50 @@
+.apartments
+	display: flex
+	margin-bottom: 50px
+	&__left, &__right
+		flex: 1 1 0
+	&__left
+		background-color: $dark-color
+		color: #fff
+		padding: 20px 30px
+		padding-left: 10%
+	&__right
+		background-position: 50% 50%
+		background-size: cover
+	&__title
+		margin-left: 10%
+	&__desc
+		margin-bottom: 20px
+
+
+.prices
+	&__item
+		color: #fff
+		display: inline-block
+		margin: 0 5px
+		padding: 10px
+		&:first-child
+			background-color: rgba($dark-color, .7)
+			color: $accent-color
+		&:last-child
+			background-color: rgba($accent-color, .7)
+
+
+.apart-inf
+	border-top: 1px solid $accent-color
+	padding-top: 15px
+	margin-bottom: 15px
+	&__item
+		position: relative
+		padding-left: 30px
+		margin-bottom: 7px
+		color: #fff
+		svg 
+			position: absolute
+			width: 20px
+			height: 20px
+			left: 0
+			top: 50%
+			margin-top: -10px
+			path
+				fill: rgba($accent-color, .7)

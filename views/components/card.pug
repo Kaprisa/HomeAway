@@ -1,0 +1,9 @@
+//- const cards = [{'img': '/images/crokus.jpg', 'name': 'Концертный зал "Крокус сити холл"'}, {'img': '/images/snow.jpg', 'name': 'Всесезонный горнолыжный комплекс "Снеж.ком"'}, {'img': '/images/serf.jpg', 'name': 'Вейксерф клуб "Endless summer"'}, {'img': '/images/shore.jpg', 'name': 'Яхт-клуб и ресторан "Shore house"'}]
+
+
+//each card in cards
+.card.near__item
+	img.card__img(src=`/uploads/${place.photo}`)
+	h4.card__title.title.title_small= place.name
+	p.card__desc #{`${place.description.slice(0, 200)}...`}
+	a.card__btn.btn(href="/map") Показать на карте

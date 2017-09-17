@@ -1,0 +1,24 @@
+.tabs
+	position: relative
+	&-nav
+		position: absolute
+		top: -40px
+		z-index: 5
+		&__item
+			display: inline-block
+			color: #fff
+			padding: 10px 15px
+			line-height: 20px
+			font-size: 16px
+			cursor: pointer
+			background-color: $accent-color
+			&_active
+				background-color: $dark-color
+				padding-top: 12px
+				background-image: url(/public/images/bg3.jpg)
+	&__item
+		display: none
+		padding: 10px 15px
+		z-index: 10
+		&_active
+			display: flex

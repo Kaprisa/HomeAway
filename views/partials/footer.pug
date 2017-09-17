@@ -1,0 +1,18 @@
+footer.footer
+	include ../components/navigation
+	.footer__client.client-menu
+		h5.footer__title Для клиентов
+		ul.client-menu__list
+			li.client-menu__item: a.client-menu__link(href="/account") Личный кабинет
+			li.client-menu__item: a.client-menu__link(href="/sales") Скидочная система
+			li.client-menu__item: a.client-menu__link(href="/prices") Ценовая сетка
+			li.client-menu__item: a.client-menu__link(href="/reports") Отзывы
+	.footer__contacts.footer-contacts
+		h5.footer__title Давайте дружить
+		include ../components/social
+		span.footer-contacts__phone +7 (999) 99 99 99
+		span.footer-contacts__mail apartments@gmail.com
+
+
+
+
